@@ -33,7 +33,7 @@ def plot_power_triangle(real_power, reactive_power, apparent_power):
     # Add labels
     ax.text(real_power / 2, -1, f'Real Power: {real_power:.2f}', ha='center')
     ax.text(real_power + 1, reactive_power / 2, f'Reactive Power: {reactive_power:.2f}', va='center', rotation=90)
-    ax.text(real_power / 2, reactive_power / 2, f'Apparent Power: {apparent_power:.2f}', ha='center', va='center', rotation=45)
+    ax.text(real_power / 2, reactive_power / 2, f'Apparent Power: {apparent_power:.2f}', ha='center', va='center', rotation=30)
 
     ax.set_xlabel('Real Power')
     ax.set_ylabel('Reactive Power')
@@ -54,7 +54,7 @@ def plot_impedance_triangle(resistance, reactance, impedance):
     # Add labels
     ax.text(resistance / 2, -1, f'Resistance: {resistance:.2f}', ha='center')
     ax.text(resistance + 1, reactance / 2, f'Reactance: {reactance:.2f}', va='center', rotation=90)
-    ax.text(resistance / 2, reactance / 2, f'Impedance: {impedance:.2f}', ha='center', va='center', rotation=45)
+    ax.text(resistance / 2, reactance / 2, f'Impedance: {impedance:.2f}', ha='center', va='center', rotation=30)
 
     ax.set_xlabel('Resistance')
     ax.set_ylabel('Reactance')
@@ -64,15 +64,16 @@ def plot_impedance_triangle(resistance, reactance, impedance):
 
 def main():
 
-    triangle_type = st.sidebar.radio('Select Triangle Type', ['Power Triangle', 'Impedance Triangle'])
+    st.sidebar.markdown("Types of triangle : ")
+    triangle_type = st.sidebar.radio('Select',['Power Triangle', 'Impedance Triangle'])
 
     if triangle_type == 'Power Triangle':
+        st.subheader('Select the type of triangle in the sidebar : Impedance / Power')
         st.title('Power Triangle Calculator')
-        st.subheader('Power Triangle')
     # Input sliders for voltage, current, and phase angle
-        voltage = st.slider('Voltage', min_value=0, max_value=100, value=10)
-        current = st.slider('Current', min_value=0, max_value=100, value=5)
-        phase_angle = st.slider('Phase Angle', min_value=-180, max_value=180, value=0)
+        voltage = st.slider('Voltage', min_value=0, max_value=100, value=50)
+        current = st.slider('Current', min_value=0, max_value=100, value=25)
+        phase_angle = st.slider('Phase Angle', min_value=-180, max_value=180, value=30)
 
         real_power, reactive_power, apparent_power = calculate_power_triangle(voltage, current, phase_angle)
 
@@ -80,8 +81,8 @@ def main():
         plot_power_triangle(real_power, reactive_power, apparent_power)
 
     elif triangle_type == 'Impedance Triangle':
+        st.subheader('Select the type of triangle in the sidebar : Impedance / Power')
         st.title('Impedance Triangle Calculator')
-        st.subheader('Impedance Triangle')
     # Input sliders for voltage, current, and phase angle
         voltage = st.slider('Voltage', min_value=0, max_value=100, value=10)
         current = st.slider('Current', min_value=0, max_value=100, value=5)
