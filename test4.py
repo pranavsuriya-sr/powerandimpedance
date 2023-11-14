@@ -73,7 +73,7 @@ def main():
     # Input sliders for voltage, current, and phase angle
         voltage = st.slider('Voltage', min_value=0, max_value=100, value=50)
         current = st.slider('Current', min_value=0, max_value=100, value=25)
-        phase_angle = st.slider('Phase Angle', min_value=-180, max_value=180, value=30)
+        phase_angle = st.slider('Phase Angle', min_value=0, max_value=90, value=30)
 
         real_power, reactive_power, apparent_power = calculate_power_triangle(voltage, current, phase_angle)
 
