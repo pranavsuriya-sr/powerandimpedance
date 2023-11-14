@@ -86,7 +86,7 @@ def main():
     # Input sliders for voltage, current, and phase angle
         voltage = st.slider('Voltage', min_value=0, max_value=100, value=10)
         current = st.slider('Current', min_value=0, max_value=100, value=5)
-        phase_angle = st.slider('Phase Angle', min_value=-180, max_value=180, value=0)
+        phase_angle = st.slider('Phase Angle', min_value=0, max_value=90, value=0)
 
         resistance, reactance, impedance = calculate_impedance_triangle(voltage, current, phase_angle)
 
